@@ -1,6 +1,5 @@
 include:
   - docker.base
-  - docker.mine
 
 init new swarm cluster:
   cmd.run:

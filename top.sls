@@ -2,7 +2,6 @@ base:
   'swarmmanager':
     - match: nodegroup
     - docker.base
-    - docker.mine
 
   'swarmworker':
     - match: nodegroup
