@@ -1,9 +1,9 @@
 base:
   '*':
     - base
-  {% if "k8s-master" in grains.get('role', []) %}
-    - k8s-master
+  {% if "swarm-master" in grains.get('role', []) %}
+    - swarm-master
   {% endif %}
-  {% if "k8s-worker" in grains.get('role', []) %}
-    - k8s-worker
+  {% if "swarm-worker" in grains.get('role', []) %}
+    - swarm-worker
   {% endif %}
