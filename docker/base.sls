@@ -1,7 +1,10 @@
-base_repositories:
+repositories_salt:
   pkg.installed:
     - sources:
       - salt-repo: https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
+
+repositories_epel:
+  pkg.installed:      
     - pkgs:
       - epel-release
 
