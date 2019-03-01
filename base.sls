@@ -1,24 +1,36 @@
-add_repository_salt:
+base_repositories:
   pkg.installed:
     - sources:
       - salt-repo: https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
+    - pkgs:
+      - epel-release
 
-add_repository_docker:
-  cmd.run:
-    - name: |
-       yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
-intall_packages:
+base_packages:
   pkg.installed:
     - pkgs:
       - wget
       - nano
-      - epel-release
       - yum-utils
       - policycoreutils-python
       - selinux-policy-targeted
       - device-mapper-persistent-data
       - lvm2
+
+docker:
+  pkgrepo.managed:
+    - humanname: Docker CE Stable
+    - baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    - gpgkey: https://download.docker.com/linux/centos/gpg
+    - gpgcheck: 1
+  service.running:
+    - enable: True
+    - require:
+      - pkg: docker-ce
+
+docker-ce:
+  pkg.installed:
+    - require:
+      - pkgrepo: docker
 
 firewalld:
   service.dead:
