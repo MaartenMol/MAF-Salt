@@ -1,0 +1,12 @@
+{% from "docker/map.jinja" import host with context %}
+
+{%- if host.get('enabled', False) %}
+local_plugin:
+  collectd_docker:
+    plugin: python
+    template: 'docker/files/collectd_docker.conf'
+  collectd_processes:
+    process:
+      docker:
+        match: dockerd
+{%- endif %}

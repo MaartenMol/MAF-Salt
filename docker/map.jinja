@@ -1,0 +1,86 @@
+
+{% set host = salt['grains.filter_by']({
+    'CentOS': {
+        'pkgs': ['docker-io'],
+        'service': 'docker',
+    },
+    'Debian': {
+        'pkgs': ['docker.io'],
+        'service': 'docker',
+    },
+    'RedHat': {
+        'pkgs': ['iptables', 'lxc-docker'],
+        'service': 'docker',
+    },
+    'Ubuntu': {
+        'pkgs': ['docker-engine', 'python-docker'],
+        'service': 'docker',
+    },
+}, grain='os', merge=salt['pillar.get']('docker:host')) %}
+
+{% set swarm = salt['grains.filter_by']({
+    'default': {
+        'master': {
+            'port': 2377
+        },
+        'mine_function': 'grains.items'
+    }
+}, grain='os', merge=salt['pillar.get']('docker:swarm')) %}
+
+{% set client = salt['grains.filter_by']({
+    'default': {
+        'pkgs': ['python-docker'],
+        'compose': {
+          'base': '/etc/docker/compose',
+          'source': {
+            'engine': 'pkg',
+            'pkgs': ['docker-compose'],
+          },
+        },
+    },
+}, grain='os', merge=salt['pillar.get']('docker:client')) %}
+
+{% set registry = salt['grains.filter_by']({
+    'default': {
+        'pkgs': ['docker-registry'],
+        'service': 'docker-registry',
+        'cache': {
+            'engine': 'inmemory',
+        },
+        'storage': {
+            'engine': 'filesystem',
+            'root': '/var/lib/docker-registry',
+        },
+        'bind': {
+            'host': '0.0.0.0',
+            'port': 5000,
+        },
+    },
+}, grain='os', merge=salt['pillar.get']('docker:registry')) %}
+
+{% set monitoring = salt['grains.filter_by']({
+    'default': {
+        'replicas_failed_warning_threshold_percent': 0.3,
+        'replicas_failed_critical_threshold_percent': 0.6,
+    },
+}, grain='os_family', merge=salt['pillar.get']('docker:monitoring')) %}
+
+{%- load_yaml as blacklist %}
+dockerng_running:
+  - name
+  - start
+  - user
+  - image
+  - onlyif
+  - makedirs
+  - command
+  - environment
+  - ports
+  - volumes
+  - binds
+  - volumes_from
+  - links
+  - restart
+  - force
+  - build
+{%- endload %}
