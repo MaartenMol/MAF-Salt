@@ -5,11 +5,11 @@
 {%- set test_ip = salt['dnsutil.A']('master.maf.cloud')[0] %}
 {%- do salt.log.error(test_ip) -%}
 
-#include:
-#  - docker.base
-#
-#init new swarm cluster:
-#  cmd.run:
-#    - name: 'docker swarm init --advertise-addr {{ manager_ip }}'
-#    - require:
-#      - pkg: docker-ce
+include:
+ - docker.base
+
+init new swarm cluster:
+ cmd.run:
+   - name: 'docker swarm init --advertise-addr {{ test_ip }}'
+   - require:
+     - pkg: docker-ce
