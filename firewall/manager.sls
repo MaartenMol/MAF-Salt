@@ -4,9 +4,7 @@ firewalld:
     - enable: True
     - watch:
       - firewalld: public
-
-maf firewall rules managers:
-  firewalld.present:
+  present:
     - name: public
     - services:
       - ssh
