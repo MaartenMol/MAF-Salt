@@ -1,5 +1,6 @@
 #{% set manager_ip = salt['mine.get']('*', 'manager_ip').items()[0][1][0] %}
-{% set manager_ip = salt['mine.get']('*', 'manager_ip').items() %}
+#{% set manager_ip = salt['mine.get']('*', 'manager_ip').items() %}
+{% set manager_ip = salt['mine.get']('{{ manager }}', 'network.ip_addrs').items()[0][1][0] %}
 {%- do salt.log.error(manager_ip) -%}
 #include:
 #  - docker.base
