@@ -9,6 +9,6 @@ include:
 init new swarm cluster:
   cmd.run:
     - name: |
-       docker swarm init --advertise-addr {{ test_ip }}
-   - require:
-     - pkg: docker-ce
+      docker swarm init --advertise-addr 0.0.0.0
+    - require:
+      - pkg: docker-ce
