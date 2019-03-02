@@ -1,6 +1,6 @@
 maf firewall rules workers:
-  firewalld.service:
-    - name: maf
+  firewalld.present:
+    - name: public
     - default: True
     - services:
       - ssh

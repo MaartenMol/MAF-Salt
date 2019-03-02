@@ -15,7 +15,7 @@ base_packages:
       - nano
       - yum-utils
 
-firewalld:
-  service.running:
-    - enable: True
-    - reload: True
+# firewalld:
+#   service.running:
+#     - enable: True
+#     - reload: True
