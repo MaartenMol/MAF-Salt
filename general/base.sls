@@ -16,6 +16,8 @@ base_packages:
       - yum-utils
 
 firewalld:
-  service.dead:
+  service.running:
     - enable: True
     - reload: True
+    - watch:
+      - pkg: firewalld
