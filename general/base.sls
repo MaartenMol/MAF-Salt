@@ -19,5 +19,3 @@ firewalld:
   service.running:
     - enable: True
     - reload: True
-    - watch:
-      - pkg: firewalld
