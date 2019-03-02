@@ -6,7 +6,7 @@ firewalld:
       - firewalld: public
 
 maf firewall rules managers:
-  firewalld.present:
+  firewalld.service:
     - name: public
     - prune_services: True
     - services:
