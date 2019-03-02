@@ -6,9 +6,8 @@ firewalld:
       - firewalld: public
 
 maf firewall rules managers:
-  firewalld.service:
+  firewalld.present:
     - name: public
-    - prune_services: True
     - services:
       - ssh
     - ports:
