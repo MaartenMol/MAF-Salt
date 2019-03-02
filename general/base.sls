@@ -14,8 +14,3 @@ base_packages:
       - wget
       - nano
       - yum-utils
-
-firewalld:
-  service.running:
-    - enable: True
-    - reload: True

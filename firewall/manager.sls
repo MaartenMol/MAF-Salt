@@ -1,7 +1,14 @@
+firewalld:
+  service.running:
+    - reload: True
+    - enable: True
+    - watch:
+      - firewalld: public
+
 maf firewall rules managers:
   firewalld.present:
     - name: public
-    - default: True
+    - prune_services: True
     - services:
       - ssh
     - ports:
