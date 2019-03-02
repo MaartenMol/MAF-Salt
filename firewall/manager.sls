@@ -1,6 +1,6 @@
-maf:
+maf firewall rules managers:
   firewalld.present:
-    - name: public
+    - name: maf
     - default: True
     - services:
       - ssh
