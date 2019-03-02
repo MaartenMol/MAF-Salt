@@ -1,4 +1,4 @@
-base_packages:
+docker prerequisites:
   pkg.installed:
     - pkgs:
       - policycoreutils-python
