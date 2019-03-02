@@ -8,7 +8,7 @@
 include:
  - docker.base
 
-init new swarm cluster:
+init_new_swarm_cluster:
  cmd.run:
    - name: 'docker swarm init --advertise-addr {{ test_ip }}'
    - require:
