@@ -1,8 +1,15 @@
 # MAF-Salt
 
 git clone https://github.com/MaartenMol/MAF-Salt.git /srv/salt
-ln -s /srv/salt/pillar /srv/pillar
 
-salt -G 'role:swarm-master' state.highstate
+# Add Salt Node Groups Based on Host Names
+/etc/salt/master.d/nodegroups.conf:
+nodegroups:
+  swarmmanager: 'master*'
+  swarmworker: 'worker*'
 
-salt -G 'role:swarm-worker' state.highstate
+# Apply states
+salt '*' state.highstate apply
+
+# Run Docker Swarm Orchestrator
+salt-run state.orchestrate docker.bootstrap
