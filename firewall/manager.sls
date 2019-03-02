@@ -1,5 +1,5 @@
 maf firewall rules managers:
-  firewalld.present:
+  firewalld.service:
     - name: maf
     - default: True
     - services:

@@ -1,5 +1,5 @@
 maf firewall rules workers:
-  firewalld.present:
+  firewalld.service:
     - name: maf
     - default: True
     - services:
