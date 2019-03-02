@@ -1,4 +1,4 @@
-public:
+maf:
   firewalld.present:
     - name: public
     - default: True
