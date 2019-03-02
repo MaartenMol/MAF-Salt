@@ -1,4 +1,4 @@
-{% for manager in salt['saltutil.runner']('cache.grains', tgt='swarmmanager', expr_form='nodegroup') %}
+{% for manager in salt['saltutil.runner']('cache.grains', tgt='swarmmanager', tgt_type='nodegroup') %}
 
 {% if loop.first %}
 {% set manager_sls = 'docker.manager.first' %}
@@ -20,7 +20,7 @@ update mine for {{ manager }}:
 
 {% endfor %}
 
-{% for worker in salt['saltutil.runner']('cache.grains', tgt='swarmworker', expr_form='nodegroup') %}
+{% for worker in salt['saltutil.runner']('cache.grains', tgt='swarmworker', tgt_type='nodegroup') %}
 
 bootstrap swarm worker {{ worker }}:
   salt.state:
