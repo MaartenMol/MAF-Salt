@@ -2,8 +2,9 @@ public:
   firewalld.present:
     - name: public
     - default: True
+    - services:
+      - ssh
     - ports:
-      - 22/tcp      #SSH
       - 4505/tcp    #Salt Master Communications
       - 4506/tcp    #Salt Master Communications
       - 2377/tcp    #Docker Swarm Manager Copmmunications
