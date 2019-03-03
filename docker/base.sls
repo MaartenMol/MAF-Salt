@@ -34,10 +34,6 @@ glusterd:
     - dir_mode: 660
     - makedirs: True
 
-peer-cluster:
-  glusterfs.peered:
-    - name: three
-
 peer-clusters:
   glusterfs.peered:
     - names:
