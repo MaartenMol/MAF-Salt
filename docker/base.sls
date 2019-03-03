@@ -26,14 +26,13 @@ docker-ce:
 glusterd:
   service.running:
     - enable: True
-    - require:
-      - pkg: glusterfs-server
 
 /srv/gluster/bricks:
   file.directory:
     - user: root
     - group: root
     - dir_mode: 660
+    - makedirs: True
 
 peer-cluster:
   glusterfs.peered:
