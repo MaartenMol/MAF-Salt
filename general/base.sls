@@ -26,6 +26,7 @@ vg_gluster:
 lv_gluster:
   lvm.lv_present:
     - vgname: vg_gluster
+    - size: 100%FREE
 
 /gluster:
   mount.mounted:
