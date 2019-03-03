@@ -30,7 +30,7 @@ lv_gluster:
 
 /gluster:
   mount.mounted:
-    - device: /dev/sdb
+    - device: /dev/vg_gluster/lv_gluster
     - fstype: xfs
     - opts: noatime
     - dump: 0
