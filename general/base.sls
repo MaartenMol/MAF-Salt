@@ -15,3 +15,13 @@ base_packages:
       - wget
       - nano
       - yum-utils
+
+/gluster:
+  mount.mounted:
+    - device: /dev/sdb
+    - fstype: xfs
+    - opts: noatime
+    - dump: 0
+    - pass_num: 0
+    - persist: True
+    - mkmnt: True

@@ -27,7 +27,7 @@ glusterd:
   service.running:
     - enable: True
 
-/srv/gluster/bricks:
+/gluster/bricks:
   file.directory:
     - user: root
     - group: root
@@ -49,9 +49,9 @@ volume replicated with arbiter brick:
   glusterfs.volume_present:
     - name: swarmVol
     - bricks:
-      - master.maf.cloud:/srv/gluster/bricks
-      - minion1.maf.cloud:/srv/gluster/bricks
-      - minion2.maf.cloud:/srv/gluster/bricks
+      - master.maf.cloud:/gluster/bricks
+      - minion1.maf.cloud:/gluster/bricks
+      - minion2.maf.cloud:/gluster/bricks
     - replica: 3
     - arbiter: True
     - start: True
