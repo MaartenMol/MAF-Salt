@@ -28,12 +28,17 @@ lv_gluster:
     - vgname: vg_gluster
     - size: 80G
 
-/gluster:
-  mount.mounted:
-    - device: /dev/vg_gluster/lv_gluster
-    - fstype: xfs
-    - opts: noatime
-    - dump: 0
-    - pass_num: 0
-    - persist: True
-    - mkmnt: True
+/dev/vg_gluster/lv_gluster:
+  blockdev.formatted:
+    - fs_type: xfs
+    - force: True
+
+# /gluster:
+#   mount.mounted:
+#     - device: /dev/vg_gluster/lv_gluster
+#     - fstype: xfs
+#     - opts: noatime
+#     - dump: 0
+#     - pass_num: 0
+#     - persist: True
+#     - mkmnt: True
