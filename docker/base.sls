@@ -5,6 +5,7 @@ docker prerequisites:
       - selinux-policy-targeted
       - device-mapper-persistent-data
       - lvm2
+      - glusterfs-server
 
 docker:
   pkgrepo.managed:
@@ -21,6 +22,40 @@ docker-ce:
   pkg.installed:
     - require:
       - pkgrepo: docker
+
+glusterd:
+  service.running:
+    - enable: True
+    - require:
+      - pkg: glusterfs-server
+
+/srv/gluster/bricks:
+  file.directory:
+    - user: root
+    - group: root
+    - dir_mode: 660
+
+peer-cluster:
+  glusterfs.peered:
+    - name: three
+
+peer-clusters:
+  glusterfs.peered:
+    - names:
+      - master.maf.cloud
+      - minion1.maf.cloud
+      - minion2.maf.cloud
+
+volume replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: swarmVol
+    - bricks:
+      - master.maf.cloud:/srv/gluster/bricks
+      - minion1.maf.cloud:/srv/gluster/bricks
+      - minion2.maf.cloud:/srv/gluster/bricks
+    - replica: 3
+    - arbiter: True
+    - start: True
 
 install ctop:
   cmd.run:
