@@ -16,6 +16,17 @@ base_packages:
       - nano
       - yum-utils
 
+/dev/sdb:
+  lvm.pv_present
+
+vg_gluster:
+  lvm.vg_present:
+    - devices: /dev/sdb
+
+lv_gluster:
+  lvm.lv_present:
+    - vgname: vg_gluster
+
 /gluster:
   mount.mounted:
     - device: /dev/sdb
