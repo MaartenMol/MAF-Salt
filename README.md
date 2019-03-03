@@ -9,7 +9,7 @@ nodegroups:
   swarmworker: 'worker*'
 
 # Apply states
-salt '*' state.highstate apply
+salt '*' state.apply
 
 # Run Docker Swarm Orchestrator
 salt-run state.orchestrate docker.bootstrap
