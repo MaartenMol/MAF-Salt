@@ -1,5 +1,8 @@
 # MAF-Salt
+## Add a second disk first!
+SATA ~100GB
 
+# Get started
 git clone https://github.com/MaartenMol/MAF-Salt.git /srv/salt
 
 # Add Salt Node Groups Based on Host Names
