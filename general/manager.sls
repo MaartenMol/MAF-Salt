@@ -19,6 +19,13 @@
     - group: root
     - mode: 755
 
+/usr/local/bin/start_server.sh:
+  file.managed:
+    - source: salt://general/files/consul/start_server.sh
+    - user: root
+    - group: root
+    - mode: 755
+
 /etc/consul.d/server/config.json:
   file.managed:
     - source: salt://general/files/consul/config-server.json
