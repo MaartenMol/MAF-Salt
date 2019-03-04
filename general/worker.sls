@@ -37,10 +37,6 @@ consul_check_node:
   file.managed:
     - name: /etc/consul.d/client/check_node.json
     - source: salt://general/files/consul/check_node.json
-  module.run:
-    - name: service.consul-agent_reload
-    - onchanges:
-      - file: consul_check_node
 
 consul-agent_running:
   service.running:
