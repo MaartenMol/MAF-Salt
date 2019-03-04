@@ -6,8 +6,7 @@ After=network-online.target
 [Service]
 Environment=GOMAXPROCS=2
 Restart=on-failure
-ExecStartPre=ip=$(dig +short `hostname -f`)
-ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d/server -rejoin -ui -data-dir=/var/db/consul -bind=${ip}
+ExecStart=ip=$(dig +short `hostname -f`) && /usr/local/bin/consul agent -config-dir=/etc/consul.d/server -rejoin -ui -data-dir=/var/db/consul -bind=${ip}
 ExecReload=/bin/kill -HUP
 KillSignal=SIGTERM
 
