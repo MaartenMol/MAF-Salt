@@ -19,6 +19,13 @@
     - group: root
     - mode: 755
 
+/usr/local/bin/start_agent.sh:
+  file.managed:
+    - source: salt://general/files/consul/start_agent.sh
+    - user: root
+    - group: root
+    - mode: 755
+
 /etc/consul.d/client/config.json:
   file.managed:
     - source: salt://general/files/consul/config-agent.json
