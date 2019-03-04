@@ -16,6 +16,33 @@ base_packages:
       - nano
       - yum-utils
 
+prometheus:
+  user.present:
+    - fullname: Prometheus Service Account
+    - shell: /bin/bash
+
+/usr/local/bin/node_exporter:
+  file.managed:
+    - source: salt://general/files/node_exporter-0.17.0.linux-amd64
+    - user: root
+    - group: root
+    - mode: 755
+
+node_exporter_systemd:
+  file.managed:
+    - name: /etc/systemd/system/node_exporter.service
+    - source: salt://general/files/node_exporter.service
+  module.run:
+    - name: service.systemctl_reload
+    - onchanges:
+      - file: node_exporter_systemd
+
+node_exporter_running:
+  service.running:
+    - name: node_exporter
+    - watch:
+      - module: node_exporter_systemd
+
 /dev/sdb:
   lvm.pv_present
 

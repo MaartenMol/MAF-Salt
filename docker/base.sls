@@ -52,11 +52,12 @@ volume replicated with arbiter brick:
     - arbiter: True
     - start: True
 
-install ctop:
-  cmd.run:
-    - name: 'wget https://github.com/bcicen/ctop/releases/download/v0.7.2/ctop-0.7.2-linux-amd64 -O /usr/local/bin/ctop && chmod +x /usr/local/bin/ctop'
-    - require:
-      - pkg: docker-ce
+/usr/local/bin/ctop:
+  file.managed:
+    - source: salt://docker/files/ctop-0.7.2-linux-amd64
+    - user: root
+    - group: root
+    - mode: 755
 
 disabled:
   selinux.mode

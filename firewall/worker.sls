@@ -13,6 +13,7 @@ public:
       - 7946/tcp    #Container Network Discovery TCP
       - 7946/udp    #Container Network Discovery UDP
       - 4789/udp    #Container Ingress Networking
+      - 9100/tcp        #Node_Exporter
       # - 111/tcp         #Gluster Portmapper TCP
       # - 111/udp         #Gluster Portmapper UDP
       # - 24007/tcp       #Gluster Deamon
