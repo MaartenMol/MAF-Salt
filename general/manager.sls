@@ -21,8 +21,15 @@ consul:
   file.managed:
     - source: salt://general/files/consul_1.4.2_linux_amd64
     - user: root
-    - group: root
+    - group: consul
     - mode: 755
+
+/etc/consul.d/server/config.json:
+  file.managed:
+    - source: salt://general/files/consul/config-server.json
+    - user: root
+    - group: consul
+    - mode: 660
 
 consul-server_systemd:
   file.managed:
@@ -36,5 +43,6 @@ consul-server_systemd:
 consul-server_running:
   service.running:
     - name: consul-server
+    - enable: True
     - watch:
       - module: consul-server_systemd
