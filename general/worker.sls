@@ -7,14 +7,14 @@ consul:
   file.directory:
     - user: root
     - group: consul
-    - dir_mode: 660
+    - dir_mode: 770
     - makedirs: True
 
 /etc/consul.d/client/:
   file.directory:
     - user: root
     - group: consul
-    - dir_mode: 660
+    - dir_mode: 770
     - makedirs: True
 
 /usr/local/bin/consul:
