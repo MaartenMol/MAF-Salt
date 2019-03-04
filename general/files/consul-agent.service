@@ -1,13 +1,13 @@
 [Unit]
-Description=Consul Agent
+Description=Consul Server
 Requires=network-online.target
 After=network-online.target
 
 [Service]
 Environment=GOMAXPROCS=2
 Restart=on-failure
-ExecStartPre=agent_ip=$(dig +short `hostname -f`)
-ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d/client -rejoin -ui -data-dir=/var/db/consul  -bind=${agent_ip}
+ExecStartPre=ip=$(dig +short `hostname -f`)
+ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d/client -rejoin -ui -data-dir=/var/db/consul -bind=${ip}
 ExecReload=/bin/kill -HUP
 KillSignal=SIGTERM
 
