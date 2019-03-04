@@ -7,14 +7,14 @@ consul:
   file.directory:
     - user: root
     - group: consul
-    - dir_mode: 770
+    - dir_mode: 755
     - makedirs: True
 
 /etc/consul.d/server/:
   file.directory:
     - user: root
     - group: consul
-    - dir_mode: 770
+    - dir_mode: 755
     - makedirs: True
 
 /usr/local/bin/consul:
@@ -29,7 +29,7 @@ consul:
     - source: salt://general/files/consul/config-server.json
     - user: root
     - group: consul
-    - mode: 770
+    - mode: 755
 
 consul-server_systemd:
   file.managed:
