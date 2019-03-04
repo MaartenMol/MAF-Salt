@@ -42,6 +42,11 @@ consul-server_systemd:
     - onchanges:
       - file: consul-server_systemd
 
+consul_check_node:
+  file.managed:
+    - name: /etc/consul.d/server/check_node.json
+    - source: salt://general/files/consul/check_node.json
+
 consul-server_running:
   service.running:
     - name: consul-server

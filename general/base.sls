@@ -40,6 +40,7 @@ node_exporter_systemd:
 node_exporter_running:
   service.running:
     - name: node_exporter
+    - enable: True
     - watch:
       - module: node_exporter_systemd
 
