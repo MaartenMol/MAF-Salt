@@ -24,7 +24,7 @@ consul:
     - group: consul
     - mode: 755
 
-/etc/consul.d/server/config.json:
+/etc/consul.d/client/config.json:
   file.managed:
     - source: salt://general/files/consul/config-agent.json
     - user: root
