@@ -1,0 +1,31 @@
+{
+    // "advertise_addr": "{{ GetInterfaceIP \ "ens32\"}}",
+    // "bind_addr": "{{ GetInterfaceIP \ "ens32\"}}",
+    // "serf_wan": "{{ GetInterfaceIP \ "ens32\"}}",
+    "client_addr": "0.0.0.0",
+    // "advertise_addr_wan": "{{ GetInterfaceIP \ "ens32\"}}",
+    "domain": "maf.cloud",
+    "log_level": "WARN",
+    "bootstrap_expect": 1,
+    "server": true,
+    "ui": true,
+    "datacenter": "MAF",
+    "data_dir": "/var/db/consul",
+    "dns_config": {
+    "allow_stale": true,
+    "max_stale": "15s"
+    },
+    // "retry_join": [
+    // "[192.168.187.4]",
+    // "[192.168.187.5]"
+    // ],
+    // "retry_join_wan": [
+    // "[192.168.187.1]",
+    // "[192.168.187.3]"
+    // ],
+    "retry_interval": "10s",
+    "retry_max": 100,
+    "skip_leave_on_interrupt": true,
+    "leave_on_terminate": false,
+    "rejoin_after_leave": true
+}

@@ -1,0 +1,18 @@
+{
+    "service": {
+        "id": "node_exporter",
+        "name": "Node_Exporter",
+        "tags": ["Linux", "Node_Exporter"],
+        "address": "127.0.0.1",
+        "port": 9100,
+        "enable_tag_override": false,
+        "checks": [ {
+            "id": "check_exporter_node",
+            "name": "Node_Exporter",
+            "http": "http://localhost:9100",
+            "tcp": "127.0.0.1:9100",
+            "interval": "60s",
+            "timeout": "15s"} 
+        ]
+    }
+}
