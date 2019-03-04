@@ -7,7 +7,8 @@ After=network-online.target
 User=consul
 Environment=GOMAXPROCS=2
 Restart=on-failure
-ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d/client -rejoin -ui -data-dir=/var/db/consul  -bind='{{ GetInterfaceIP "ens32" }}'
+ExecStartPre=/bin/bash -c "/bin/systemctl set-environment ip=$(dig +short `hostname -f`)"
+ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d/client -rejoin -ui -data-dir=/var/db/consul  -bind= ${ip}
 ExecReload=/bin/kill -HUP
 KillSignal=SIGTERM
 
