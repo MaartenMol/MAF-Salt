@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Environment=GOMAXPROCS=2
 Restart=on-failure
-ExecStart=/usr/local/bin/start_server.sh
+ExecStart=/bin/bash /usr/local/bin/start_server.sh
 ExecReload=/bin/kill -HUP
 KillSignal=SIGTERM
 
