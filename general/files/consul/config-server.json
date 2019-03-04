@@ -1,9 +1,9 @@
 {
-    "advertise_addr": "{{ GetInterfaceIP \ "ens32\"}}",
-    "bind_addr": "{{ GetInterfaceIP \ "ens32\"}}",
-    "serf_wan": "{{ GetInterfaceIP \ "ens32\"}}",
+    // "advertise_addr": "{{ GetInterfaceIP \ "ens32\"}}",
+    // "bind_addr": "{{ GetInterfaceIP \ "ens32\"}}",
+    // "serf_wan": "{{ GetInterfaceIP \ "ens32\"}}",
     "client_addr": "0.0.0.0",
-    "advertise_addr_wan": "{{ GetInterfaceIP \ "ens32\"}}",
+    // "advertise_addr_wan": "{{ GetInterfaceIP \ "ens32\"}}",
     "domain": "maf.cloud",
     "log_level": "WARN",
     "bootstrap_expect": 1,
