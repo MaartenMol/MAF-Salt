@@ -27,7 +27,7 @@ consul:
 consul-server_systemd:
   file.managed:
     - name: /etc/systemd/system/consul-server.service
-    - source: salt://general/files/consul-agent.service
+    - source: salt://general/files/consul-server.service
   module.run:
     - name: service.systemctl_reload
     - onchanges:
