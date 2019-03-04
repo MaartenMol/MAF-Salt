@@ -4,7 +4,6 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-User=consul
 Environment=GOMAXPROCS=2
 Restart=on-failure
 ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d/server -rejoin -ui -data-dir=/var/db/consul -bind=$(dig +short `hostname -f`)

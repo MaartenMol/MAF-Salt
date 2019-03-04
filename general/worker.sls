@@ -1,19 +1,14 @@
-consul:
-  user.present:
-    - fullname: Consul Service Account
-    - shell: /bin/bash
-
 /var/db/consul/:
   file.directory:
     - user: root
-    - group: consul
+    - group: root
     - dir_mode: 755
     - makedirs: True
 
 /etc/consul.d/client/:
   file.directory:
     - user: root
-    - group: consul
+    - group: root
     - dir_mode: 755
     - makedirs: True
 
@@ -21,14 +16,14 @@ consul:
   file.managed:
     - source: salt://general/files/consul_1.4.2_linux_amd64
     - user: root
-    - group: consul
+    - group: root
     - mode: 755
 
 /etc/consul.d/client/config.json:
   file.managed:
     - source: salt://general/files/consul/config-agent.json
     - user: root
-    - group: consul
+    - group: root
     - mode: 755
 
 consul-agent_systemd:
