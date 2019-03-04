@@ -29,7 +29,7 @@ consul:
     - source: salt://general/files/consul/config-server.json
     - user: root
     - group: consul
-    - mode: 660
+    - mode: 770
 
 consul-server_systemd:
   file.managed:
