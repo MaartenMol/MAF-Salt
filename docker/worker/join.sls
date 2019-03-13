@@ -9,3 +9,9 @@ join cluster:
     - name: 'docker swarm join --token {{ join_token }} {{ join_ip }}:2377'
     - require:
       - pkg: docker-ce
+
+install gluster volume plugin:
+  cmd.run:
+    - name: 'docker plugin install sapk/plugin-gluster'
+    - require:
+      - pkg: docker-ce

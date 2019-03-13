@@ -8,3 +8,9 @@ init cluster:
     - name: 'docker swarm init --advertise-addr {{ join_ip }}'
     - require:
       - pkg: docker-ce
+
+install gluster volume plugin:
+  cmd.run:
+    - name: 'docker plugin install sapk/plugin-gluster'
+    - require:
+      - pkg: docker-ce
