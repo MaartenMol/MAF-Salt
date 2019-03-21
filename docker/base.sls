@@ -27,21 +27,21 @@ glusterd:
   service.running:
     - enable: True
 
-/gluster/bricks:
+/gluster/volumes:
   file.directory:
     - user: root
     - group: root
     - dir_mode: 777
     - makedirs: True
 
-/gluster/bricks/swarmVol:
+/gluster/volumes/swarmVol:
   file.directory:
     - user: root
     - group: root
     - dir_mode: 777
     - makedirs: True
 
-/gluster/bricks/monitoring:
+/gluster/volumes/monitoring:
   file.directory:
     - user: root
     - group: root
@@ -59,9 +59,9 @@ volume swarmVol replicated with arbiter brick:
   glusterfs.volume_present:
     - name: swarmVol
     - bricks:
-      - master.maf.cloud:/gluster/bricks/swarmVol
-      - minion1.maf.cloud:/gluster/bricks/swarmVol
-      - minion2.maf.cloud:/gluster/bricks/swarmVol
+      - master.maf.cloud:/gluster/volumes/swarmVol
+      - minion1.maf.cloud:/gluster/volumes/swarmVol
+      - minion2.maf.cloud:/gluster/volumes/swarmVol
     - replica: 3
     - arbiter: True
     - start: True
@@ -70,9 +70,9 @@ volume monitoring replicated with arbiter brick:
   glusterfs.volume_present:
     - name: monitoring
     - bricks:
-      - master.maf.cloud:/gluster/bricks/monitoring
-      - minion1.maf.cloud:/gluster/bricks/monitoring
-      - minion2.maf.cloud:/gluster/bricks/monitoring
+      - master.maf.cloud:/gluster/volumes/monitoring
+      - minion1.maf.cloud:/gluster/volumes/monitoring
+      - minion2.maf.cloud:/gluster/volumes/monitoring
     - replica: 3
     - arbiter: True
     - start: True
