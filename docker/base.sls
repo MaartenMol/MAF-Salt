@@ -96,6 +96,39 @@ volume alertmanager replicated with arbiter brick:
     - arbiter: True
     - start: True
 
+volume mafApiDB replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: mafApiDB
+    - bricks:
+      - master.maf.cloud:/gluster/volumes/mafApiDB
+      - minion1.maf.cloud:/gluster/volumes/mafApiDB
+      - minion2.maf.cloud:/gluster/volumes/mafApiDB
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume elasticsearch replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: elasticsearch
+    - bricks:
+      - master.maf.cloud:/gluster/volumes/elasticsearch
+      - minion1.maf.cloud:/gluster/volumes/elasticsearch
+      - minion2.maf.cloud:/gluster/volumes/elasticsearch
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume elastalert replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: elastalert
+    - bricks:
+      - master.maf.cloud:/gluster/volumes/elastalert
+      - minion1.maf.cloud:/gluster/volumes/elastalert
+      - minion2.maf.cloud:/gluster/volumes/elastalert
+    - replica: 3
+    - arbiter: True
+    - start: True
+
 /usr/local/bin/ctop:
   file.managed:
     - source: salt://docker/files/ctop-0.7.2-linux-amd64
