@@ -31,7 +31,21 @@ glusterd:
   file.directory:
     - user: root
     - group: root
-    - dir_mode: 660
+    - dir_mode: 777
+    - makedirs: True
+
+/gluster/bricks/swarmVol:
+  file.directory:
+    - user: root
+    - group: root
+    - dir_mode: 777
+    - makedirs: True
+
+/gluster/bricks/monitoring:
+  file.directory:
+    - user: root
+    - group: root
+    - dir_mode: 777
     - makedirs: True
 
 peer-clusters:
@@ -41,13 +55,24 @@ peer-clusters:
       - minion1.maf.cloud
       - minion2.maf.cloud
 
-volume replicated with arbiter brick:
+volume swarmVol replicated with arbiter brick:
   glusterfs.volume_present:
     - name: swarmVol
     - bricks:
-      - master.maf.cloud:/gluster/bricks
-      - minion1.maf.cloud:/gluster/bricks
-      - minion2.maf.cloud:/gluster/bricks
+      - master.maf.cloud:/gluster/bricks/swarmVol
+      - minion1.maf.cloud:/gluster/bricks/swarmVol
+      - minion2.maf.cloud:/gluster/bricks/swarmVol
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume monitoring replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: monitoring
+    - bricks:
+      - master.maf.cloud:/gluster/bricks/monitoring
+      - minion1.maf.cloud:/gluster/bricks/monitoring
+      - minion2.maf.cloud:/gluster/bricks/monitoring
     - replica: 3
     - arbiter: True
     - start: True
