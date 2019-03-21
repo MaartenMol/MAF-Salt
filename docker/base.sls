@@ -41,13 +41,13 @@ peer-clusters:
       - minion1.maf.cloud
       - minion2.maf.cloud
 
-volume swarmVol replicated with arbiter brick:
+volume portainer replicated with arbiter brick:
   glusterfs.volume_present:
-    - name: swarmVol
+    - name: portainer
     - bricks:
-      - master.maf.cloud:/gluster/volumes/swarmVol
-      - minion1.maf.cloud:/gluster/volumes/swarmVol
-      - minion2.maf.cloud:/gluster/volumes/swarmVol
+      - master.maf.cloud:/gluster/volumes/portainer
+      - minion1.maf.cloud:/gluster/volumes/portainer
+      - minion2.maf.cloud:/gluster/volumes/portainer
     - replica: 3
     - arbiter: True
     - start: True
