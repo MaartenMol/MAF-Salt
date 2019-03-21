@@ -11,6 +11,6 @@ init cluster:
 
 install gluster volume plugin:
   cmd.run:
-    - name: 'docker plugin install sapk/plugin-gluster --grant-all-permissions'
+    - name: 'docker plugin install sapk/plugin-gluster:v1.0.7-3 --grant-all-permissions'
     - require:
       - pkg: docker-ce
