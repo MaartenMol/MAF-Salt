@@ -65,7 +65,7 @@ volume monitoring replicated with arbiter brick:
 
 volume grafana replicated with arbiter brick:
   glusterfs.volume_present:
-    - name: monitoring
+    - name: grafana
     - bricks:
       - master.maf.cloud:/gluster/volumes/grafana
       - minion1.maf.cloud:/gluster/volumes/grafana
