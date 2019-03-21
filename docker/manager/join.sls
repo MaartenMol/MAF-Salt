@@ -13,6 +13,6 @@ join cluster:
 
 install gluster volume plugin:
   cmd.run:
-    - name: 'docker plugin install sapk/plugin-gluster'
+    - name: 'docker plugin install sapk/plugin-gluster --grant-all-permissions'
     - require:
       - pkg: docker-ce
