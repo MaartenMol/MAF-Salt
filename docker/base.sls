@@ -34,20 +34,6 @@ glusterd:
     - dir_mode: 777
     - makedirs: True
 
-/gluster/volumes/swarmVol:
-  file.directory:
-    - user: root
-    - group: root
-    - dir_mode: 777
-    - makedirs: True
-
-/gluster/volumes/monitoring:
-  file.directory:
-    - user: root
-    - group: root
-    - dir_mode: 777
-    - makedirs: True
-
 peer-clusters:
   glusterfs.peered:
     - names:
