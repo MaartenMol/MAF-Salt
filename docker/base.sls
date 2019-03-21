@@ -63,6 +63,17 @@ volume monitoring replicated with arbiter brick:
     - arbiter: True
     - start: True
 
+volume grafana replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: monitoring
+    - bricks:
+      - master.maf.cloud:/gluster/volumes/grafana
+      - minion1.maf.cloud:/gluster/volumes/grafana
+      - minion2.maf.cloud:/gluster/volumes/grafana
+    - replica: 3
+    - arbiter: True
+    - start: True
+
 /usr/local/bin/ctop:
   file.managed:
     - source: salt://docker/files/ctop-0.7.2-linux-amd64
