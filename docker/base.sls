@@ -52,13 +52,13 @@ volume swarmVol replicated with arbiter brick:
     - arbiter: True
     - start: True
 
-volume monitoring replicated with arbiter brick:
+volume prometheus replicated with arbiter brick:
   glusterfs.volume_present:
-    - name: monitoring
+    - name: prometheus
     - bricks:
-      - master.maf.cloud:/gluster/volumes/monitoring
-      - minion1.maf.cloud:/gluster/volumes/monitoring
-      - minion2.maf.cloud:/gluster/volumes/monitoring
+      - master.maf.cloud:/gluster/volumes/prometheus
+      - minion1.maf.cloud:/gluster/volumes/prometheus
+      - minion2.maf.cloud:/gluster/volumes/prometheus
     - replica: 3
     - arbiter: True
     - start: True
@@ -70,6 +70,28 @@ volume grafana replicated with arbiter brick:
       - master.maf.cloud:/gluster/volumes/grafana
       - minion1.maf.cloud:/gluster/volumes/grafana
       - minion2.maf.cloud:/gluster/volumes/grafana
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume grafana-db replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: grafana-db
+    - bricks:
+      - master.maf.cloud:/gluster/volumes/grafana-db
+      - minion1.maf.cloud:/gluster/volumes/grafana-db
+      - minion2.maf.cloud:/gluster/volumes/grafana-db
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume alertmanager replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: alertmanager
+    - bricks:
+      - master.maf.cloud:/gluster/volumes/alertmanager
+      - minion1.maf.cloud:/gluster/volumes/alertmanager
+      - minion2.maf.cloud:/gluster/volumes/alertmanager
     - replica: 3
     - arbiter: True
     - start: True
