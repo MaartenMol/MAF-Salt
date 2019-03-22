@@ -129,6 +129,17 @@ volume elastalert replicated with arbiter brick:
     - arbiter: True
     - start: True
 
+volume swirl-db replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: swirl-db
+    - bricks:
+      - master.maf.cloud:/gluster/volumes/swirl-db
+      - minion1.maf.cloud:/gluster/volumes/swirl-db
+      - minion2.maf.cloud:/gluster/volumes/swirl-db
+    - replica: 3
+    - arbiter: True
+    - start: True
+
 /usr/local/bin/ctop:
   file.managed:
     - source: salt://docker/files/ctop-0.7.2-linux-amd64
