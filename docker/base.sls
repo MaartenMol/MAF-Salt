@@ -147,5 +147,12 @@ volume swirl-db replicated with arbiter brick:
     - group: root
     - mode: 755
 
+/usr/local/bin/scope:
+  file.managed:
+    - source: salt://docker/files/scope-1.10.2-linux-amd64
+    - user: root
+    - group: root
+    - mode: 755
+
 disabled:
   selinux.mode
