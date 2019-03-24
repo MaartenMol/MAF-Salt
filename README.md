@@ -2,8 +2,8 @@
 ## Prerequisites
 * 3 nodes named:\
     master1.maf.cloud\
-    minion1.maf.cloud\
-    minion2.maf.cloud
+    worker1.maf.cloud\
+    worker2.maf.cloud
 * 2Gb ram
 * 1 vCPU
 * 100GB extra sata disk
