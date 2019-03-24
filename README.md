@@ -7,7 +7,7 @@ SATA ~100GB
 yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm \
 yum install salt-minion -y \
 yum install salt-master -y \
-systemctl stop firewalld    # temporarily salt fixes this later \
+systemctl stop firewalld \   # temporarily salt fixes this later
 systemctl start salt-minion \ 
 systemctl enable salt-minion \
 systemctl start salt-master \
@@ -18,14 +18,14 @@ cat <<EOT >> /etc/salt/master.d/nodegroups.conf  \
 nodegroups: \
   swarmmanager: 'master*' \
   swarmworker: 'worker*' \
-EOT  \
+EOT  
   
 ### On the minions:
-yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
-yum install salt-minion -y
-sed -i "/#master:/c\master: master.maf.cloud" /etc/salt/minion
-systemctl start salt-minion
-systemctl enable salt-minion
+yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm \
+yum install salt-minion -y \
+sed -i "/#master:/c\master: master.maf.cloud" /etc/salt/minion \
+systemctl start salt-minion \
+systemctl enable salt-minion \
 
 ### Clone git
 git clone https://github.com/MaartenMol/MAF-Salt.git /srv/salt
