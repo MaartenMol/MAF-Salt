@@ -27,12 +27,12 @@ sed -i "/#master:/c\master: master.maf.cloud" /etc/salt/minion \
 systemctl start salt-minion \
 systemctl enable salt-minion
 
-### Clone git
+### Back on the master:
 git clone https://github.com/MaartenMol/MAF-Salt.git /srv/salt
 
-### Apply states
+#### Apply states
 cd /srv/salt
 salt '*' state.apply
 
-### Run Docker Swarm Orchestrator
+#### Run Docker Swarm Orchestrator
 salt-run state.orchestrate docker.bootstrap
