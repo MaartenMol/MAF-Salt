@@ -20,13 +20,13 @@
 * systemctl enable salt-master 
 
 #### Add Salt Node Groups Based on Host Names
-##### Edit the cat line like this:
+##### Github fucks this block up... edit the text like this screenshot:
 https://img.rikmerkens.nl/Dxks.png
 
 cat <<EOT >> /etc/salt/master.d/nodegroups.conf  
-nodegroups: 
-  swarmmanager: 'master*' 
-  swarmworker: 'worker*' 
+nodegroups: \ 
+    swarmmanager: 'master*' \
+    swarmworker: 'worker*' \
 EOT  
   
 ### On the minions:
