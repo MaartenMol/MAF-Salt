@@ -7,18 +7,18 @@ SATA ~100GB
 yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm \
 yum install salt-minion -y \
 yum install salt-master -y \
-systemctl stop firewalld    # temporarily salt fixes this later \
+systemctl stop firewalld    # temporarily salt fixes this later
 systemctl start salt-minion \ 
 systemctl enable salt-minion \
 systemctl start salt-master \
-systemctl enable salt-master \
+systemctl enable salt-master 
 
 ### Add Salt Node Groups Based on Host Names
 cat <<EOT >> /etc/salt/master.d/nodegroups.conf  \
-nodegroups:
-  swarmmanager: 'master*'
-  swarmworker: 'worker*'
-EOT  
+nodegroups: \
+  swarmmanager: 'master*' \
+  swarmworker: 'worker*' \
+EOT  \
   
 ### On the minions:
 yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
