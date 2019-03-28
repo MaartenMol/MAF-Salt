@@ -57,8 +57,8 @@ volume grafana replicated with arbiter brick:
     - name: grafana
     - bricks:
       - master-01.maf.cloud:/gluster/volumes/grafana
-      - minion-01.maf.cloud:/gluster/volumes/grafana
-      - minion-02.maf.cloud:/gluster/volumes/grafana
+      - worker-01.maf.cloud:/gluster/volumes/grafana
+      - worker-02.maf.cloud:/gluster/volumes/grafana
     - replica: 3
     - arbiter: True
     - start: True
@@ -68,8 +68,8 @@ volume alertmanager replicated with arbiter brick:
     - name: alertmanager
     - bricks:
       - master-01.maf.cloud:/gluster/volumes/alertmanager
-      - minion-01.maf.cloud:/gluster/volumes/alertmanager
-      - minion-02.maf.cloud:/gluster/volumes/alertmanager
+      - worker-01.maf.cloud:/gluster/volumes/alertmanager
+      - worker-02.maf.cloud:/gluster/volumes/alertmanager
     - replica: 3
     - arbiter: True
     - start: True
@@ -79,8 +79,8 @@ volume mafApiDB replicated with arbiter brick:
     - name: mafApiDB
     - bricks:
       - master-01.maf.cloud:/gluster/volumes/mafApiDB
-      - minion-01.maf.cloud:/gluster/volumes/mafApiDB
-      - minion-02.maf.cloud:/gluster/volumes/mafApiDB
+      - worker-01.maf.cloud:/gluster/volumes/mafApiDB
+      - worker-02.maf.cloud:/gluster/volumes/mafApiDB
     - replica: 3
     - arbiter: True
     - start: True
@@ -90,8 +90,8 @@ volume elastalert replicated with arbiter brick:
     - name: elastalert
     - bricks:
       - master-01.maf.cloud:/gluster/volumes/elastalert
-      - minion-01.maf.cloud:/gluster/volumes/elastalert
-      - minion-02.maf.cloud:/gluster/volumes/elastalert
+      - worker-01.maf.cloud:/gluster/volumes/elastalert
+      - worker-02.maf.cloud:/gluster/volumes/elastalert
     - replica: 3
     - arbiter: True
     - start: True
@@ -101,8 +101,8 @@ volume swirl-db replicated with arbiter brick:
     - name: swirl-db
     - bricks:
       - master-01.maf.cloud:/gluster/volumes/swirl-db
-      - minion-01.maf.cloud:/gluster/volumes/swirl-db
-      - minion-02.maf.cloud:/gluster/volumes/swirl-db
+      - worker-01.maf.cloud:/gluster/volumes/swirl-db
+      - worker-02.maf.cloud:/gluster/volumes/swirl-db
     - replica: 3
     - arbiter: True
     - start: True
