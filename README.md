@@ -1,47 +1,35 @@
 # MAF-Salt
 ## Prerequisites
 * 3 nodes named:\
-    master1.maf.cloud\
-    worker1.maf.cloud\
-    worker2.maf.cloud
-* 2Gb ram
-* 1 vCPU
-* 100GB extra sata disk
+    MASTER-01.maf.cloud\
+    WORKER-01.maf.cloud\
+    WORKER-02.maf.cloud
+* 3Gb ram
+* 2 vCPU
 
 # Install Salt
 ### On the master:
-* yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm 
-* yum install salt-minion -y 
-* yum install salt-master -y 
-* systemctl stop firewalld # temp salt enables this again
-* systemctl start salt-minion 
-* systemctl enable salt-minion 
-* systemctl start salt-master 
-* systemctl enable salt-master 
-
-#### Add Salt Node Groups Based on Host Names
-##### Github fucks this block up... edit the text like this screenshot:
-https://img.rikmerkens.nl/Dxks.png
-
-cat <<EOT >> /etc/salt/master.d/nodegroups.conf  
-nodegroups: \ 
-    swarmmanager: 'master*' \
-    swarmworker: 'worker*' \
-EOT  
+* ```yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm && yum install -y salt-minion salt-master```
+* ```systemctl enable salt-master && systemctl enable salt-minion```
+* ```systemctl stop firewalld```
+* ```sed -i "/#master:/c\master: MASTER-01.maf.cloud" /etc/salt/minion```
+* ```wget https://gist.github.com/MaartenMol/778fd2c1594ee693b67b187d2f1758a9/raw/c9ae87ad92f15bfa52f87e5e3c110795aeddd206/nodegroups.conf -O /etc/salt/master.d/nodegroups.conf```
+* ```systemctl start salt-master```
+* ```systemctl start salt-minion```
   
 ### On the minions:
-* yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm 
-* yum install salt-minion -y 
-* sed -i "/#master:/c\master: master.maf.cloud" /etc/salt/minion 
-* systemctl start salt-minion 
-* systemctl enable salt-minion
+* ```yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm && yum install -y salt-minion```
+* ```sed -i "/#master:/c\master: MASTER-01.maf.cloud" /etc/salt/minion```
+* ```systemctl start salt-minion && systemctl enable salt-minion```
 
 ### Back on the master:
-* git clone https://github.com/MaartenMol/MAF-Salt.git /srv/salt
+* ```git clone https://github.com/MaartenMol/MAF-Salt.git /srv/salt```
 
 #### Apply states
-* cd /srv/salt
-* salt '*' state.apply
+* ```cd /srv/salt```
+* ```salt '*' state.apply```
+* ```salt '*' saltutil.refresh_pillar```
+* ```salt '*' mine.update```
 
 #### Run Docker Swarm Orchestrator
-* salt-run state.orchestrate docker.bootstrap
+* ```salt-run state.orchestrate docker.bootstrap```

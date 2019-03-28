@@ -4,7 +4,7 @@ mine_functions:
     - "docker swarm join-token manager -q"
   manager_ip:
     - mine_function: network.ip_addrs
-    - ens32
+    - ens192
   worker_token:
     - mine_function: cmd.run
     - "docker swarm join-token worker -q"

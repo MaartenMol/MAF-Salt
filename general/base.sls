@@ -15,6 +15,7 @@ base_packages:
       - wget
       - nano
       - yum-utils
+      - open-vm-tools
 
 prometheus:
   user.present:

@@ -37,28 +37,17 @@ glusterd:
 peer-clusters:
   glusterfs.peered:
     - names:
-      - master.maf.cloud
-      - minion1.maf.cloud
-      - minion2.maf.cloud
+      - master-01.maf.cloud
+      - worker-01.maf.cloud
+      - worker-02.maf.cloud
 
 volume portainer replicated with arbiter brick:
   glusterfs.volume_present:
     - name: portainer
     - bricks:
-      - master.maf.cloud:/gluster/volumes/portainer
-      - minion1.maf.cloud:/gluster/volumes/portainer
-      - minion2.maf.cloud:/gluster/volumes/portainer
-    - replica: 3
-    - arbiter: True
-    - start: True
-
-volume prometheus replicated with arbiter brick:
-  glusterfs.volume_present:
-    - name: prometheus
-    - bricks:
-      - master.maf.cloud:/gluster/volumes/prometheus
-      - minion1.maf.cloud:/gluster/volumes/prometheus
-      - minion2.maf.cloud:/gluster/volumes/prometheus
+      - master-01.cloud:/gluster/volumes/portainer
+      - worker-01.cloud:/gluster/volumes/portainer
+      - worker-02.cloud:/gluster/volumes/portainer
     - replica: 3
     - arbiter: True
     - start: True
@@ -67,20 +56,9 @@ volume grafana replicated with arbiter brick:
   glusterfs.volume_present:
     - name: grafana
     - bricks:
-      - master.maf.cloud:/gluster/volumes/grafana
-      - minion1.maf.cloud:/gluster/volumes/grafana
-      - minion2.maf.cloud:/gluster/volumes/grafana
-    - replica: 3
-    - arbiter: True
-    - start: True
-
-volume grafana-db replicated with arbiter brick:
-  glusterfs.volume_present:
-    - name: grafana-db
-    - bricks:
-      - master.maf.cloud:/gluster/volumes/grafana-db
-      - minion1.maf.cloud:/gluster/volumes/grafana-db
-      - minion2.maf.cloud:/gluster/volumes/grafana-db
+      - master-01.maf.cloud:/gluster/volumes/grafana
+      - minion-01.maf.cloud:/gluster/volumes/grafana
+      - minion-02.maf.cloud:/gluster/volumes/grafana
     - replica: 3
     - arbiter: True
     - start: True
@@ -89,9 +67,9 @@ volume alertmanager replicated with arbiter brick:
   glusterfs.volume_present:
     - name: alertmanager
     - bricks:
-      - master.maf.cloud:/gluster/volumes/alertmanager
-      - minion1.maf.cloud:/gluster/volumes/alertmanager
-      - minion2.maf.cloud:/gluster/volumes/alertmanager
+      - master-01.maf.cloud:/gluster/volumes/alertmanager
+      - minion-01.maf.cloud:/gluster/volumes/alertmanager
+      - minion-02.maf.cloud:/gluster/volumes/alertmanager
     - replica: 3
     - arbiter: True
     - start: True
@@ -100,20 +78,9 @@ volume mafApiDB replicated with arbiter brick:
   glusterfs.volume_present:
     - name: mafApiDB
     - bricks:
-      - master.maf.cloud:/gluster/volumes/mafApiDB
-      - minion1.maf.cloud:/gluster/volumes/mafApiDB
-      - minion2.maf.cloud:/gluster/volumes/mafApiDB
-    - replica: 3
-    - arbiter: True
-    - start: True
-
-volume elasticsearch replicated with arbiter brick:
-  glusterfs.volume_present:
-    - name: elasticsearch
-    - bricks:
-      - master.maf.cloud:/gluster/volumes/elasticsearch
-      - minion1.maf.cloud:/gluster/volumes/elasticsearch
-      - minion2.maf.cloud:/gluster/volumes/elasticsearch
+      - master-01.maf.cloud:/gluster/volumes/mafApiDB
+      - minion-01.maf.cloud:/gluster/volumes/mafApiDB
+      - minion-02.maf.cloud:/gluster/volumes/mafApiDB
     - replica: 3
     - arbiter: True
     - start: True
@@ -122,9 +89,9 @@ volume elastalert replicated with arbiter brick:
   glusterfs.volume_present:
     - name: elastalert
     - bricks:
-      - master.maf.cloud:/gluster/volumes/elastalert
-      - minion1.maf.cloud:/gluster/volumes/elastalert
-      - minion2.maf.cloud:/gluster/volumes/elastalert
+      - master-01.maf.cloud:/gluster/volumes/elastalert
+      - minion-01.maf.cloud:/gluster/volumes/elastalert
+      - minion-02.maf.cloud:/gluster/volumes/elastalert
     - replica: 3
     - arbiter: True
     - start: True
@@ -133,9 +100,9 @@ volume swirl-db replicated with arbiter brick:
   glusterfs.volume_present:
     - name: swirl-db
     - bricks:
-      - master.maf.cloud:/gluster/volumes/swirl-db
-      - minion1.maf.cloud:/gluster/volumes/swirl-db
-      - minion2.maf.cloud:/gluster/volumes/swirl-db
+      - master-01.maf.cloud:/gluster/volumes/swirl-db
+      - minion-01.maf.cloud:/gluster/volumes/swirl-db
+      - minion-02.maf.cloud:/gluster/volumes/swirl-db
     - replica: 3
     - arbiter: True
     - start: True

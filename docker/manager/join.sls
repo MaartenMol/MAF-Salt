@@ -16,3 +16,9 @@ install gluster volume plugin:
     - name: 'docker plugin install --alias glusterfs trajano/glusterfs-volume-plugin --grant-all-permissions'
     - require:
       - pkg: docker-ce
+
+install vsphere volume plugin:
+  cmd.run:
+    - name: 'docker plugin install --grant-all-permissions --alias vsphere vmware/vsphere-storage-for-docker:latest'
+    - require:
+      - pkg: docker-ce
