@@ -13,7 +13,7 @@
 * ```systemctl enable salt-master && systemctl enable salt-minion```
 * ```systemctl stop firewalld```
 * ```sed -i "/#master:/c\master: MASTER-01.maf.cloud" /etc/salt/minion```
-* ```wget https://gist.github.com/MaartenMol/778fd2c1594ee693b67b187d2f1758a9/raw/c9ae87ad92f15bfa52f87e5e3c110795aeddd206/nodegroups.conf -O /etc/salt/master.d/nodegroups.conf```
+* ```wget https://gist.githubusercontent.com/MaartenMol/778fd2c1594ee693b67b187d2f1758a9/raw/4c01192d1e5dda306fb3c3925617fa4cd328ea22/nodegroups.conf -O /etc/salt/master.d/nodegroups.conf```
 * ```systemctl start salt-master```
 * ```systemctl start salt-minion```
   
