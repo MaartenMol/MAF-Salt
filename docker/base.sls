@@ -45,9 +45,9 @@ volume portainer replicated with arbiter brick:
   glusterfs.volume_present:
     - name: portainer
     - bricks:
-      - master-01.cloud:/gluster/volumes/portainer
-      - worker-01.cloud:/gluster/volumes/portainer
-      - worker-02.cloud:/gluster/volumes/portainer
+      - master-01.maf.cloud:/gluster/volumes/portainer
+      - worker-01.maf.cloud:/gluster/volumes/portainer
+      - worker-02.maf.cloud:/gluster/volumes/portainer
     - replica: 3
     - arbiter: True
     - start: True
