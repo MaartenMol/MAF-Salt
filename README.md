@@ -29,6 +29,7 @@
 * ```cd /srv/salt```
 * ```salt '*' state.apply```
 * ```salt '*' saltutil.refresh_pillar```
+* ```salt '*' pillar.items```
 * ```salt '*' mine.update```
 
 #### Run Docker Swarm Orchestrator
