@@ -74,17 +74,6 @@ volume alertmanager replicated with arbiter brick:
     - arbiter: True
     - start: True
 
-volume mafApiDB replicated with arbiter brick:
-  glusterfs.volume_present:
-    - name: mafApiDB
-    - bricks:
-      - master-01.maf.cloud:/gluster/volumes/mafApiDB
-      - worker-01.maf.cloud:/gluster/volumes/mafApiDB
-      - worker-02.maf.cloud:/gluster/volumes/mafApiDB
-    - replica: 3
-    - arbiter: True
-    - start: True
-
 volume elastalert replicated with arbiter brick:
   glusterfs.volume_present:
     - name: elastalert
