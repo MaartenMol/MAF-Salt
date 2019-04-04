@@ -49,6 +49,20 @@ volume portainer replicated with arbiter brick:
     - arbiter: True
     - start: True
 
+volume grafana-postgres replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: grafana-postgres
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/grafana-postgres
+      - worker-01.maf.cloud:/gluster/volumes/grafana-postgres
+      - worker-02.maf.cloud:/gluster/volumes/grafana-postgres
+      - worker-03.maf.cloud:/gluster/volumes/grafana-postgres
+      - worker-04.maf.cloud:/gluster/volumes/grafana-postgres
+      - worker-05.maf.cloud:/gluster/volumes/grafana-postgres
+    - replica: 3
+    - arbiter: True
+    - start: True
+
 volume grafana replicated with arbiter brick:
   glusterfs.volume_present:
     - name: grafana
@@ -59,6 +73,34 @@ volume grafana replicated with arbiter brick:
       - worker-03.maf.cloud:/gluster/volumes/grafana
       - worker-04.maf.cloud:/gluster/volumes/grafana
       - worker-05.maf.cloud:/gluster/volumes/grafana
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume prometheus replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: prometheus
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/prometheus
+      - worker-01.maf.cloud:/gluster/volumes/prometheus
+      - worker-02.maf.cloud:/gluster/volumes/prometheus
+      - worker-03.maf.cloud:/gluster/volumes/prometheus
+      - worker-04.maf.cloud:/gluster/volumes/prometheus
+      - worker-05.maf.cloud:/gluster/volumes/prometheus
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume elasticsearch replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: elasticsearch
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/elasticsearch
+      - worker-01.maf.cloud:/gluster/volumes/elasticsearch
+      - worker-02.maf.cloud:/gluster/volumes/elasticsearch
+      - worker-03.maf.cloud:/gluster/volumes/elasticsearch
+      - worker-04.maf.cloud:/gluster/volumes/elasticsearch
+      - worker-05.maf.cloud:/gluster/volumes/elasticsearch
     - replica: 3
     - arbiter: True
     - start: True
@@ -101,6 +143,90 @@ volume swirl-db replicated with arbiter brick:
       - worker-03.maf.cloud:/gluster/volumes/swirl-db
       - worker-04.maf.cloud:/gluster/volumes/swirl-db
       - worker-05.maf.cloud:/gluster/volumes/swirl-db
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume mongo-data-01 replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: mongo-data-01
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/mongo-data-01
+      - worker-01.maf.cloud:/gluster/volumes/mongo-data-01
+      - worker-02.maf.cloud:/gluster/volumes/mongo-data-01
+      - worker-03.maf.cloud:/gluster/volumes/mongo-data-01
+      - worker-04.maf.cloud:/gluster/volumes/mongo-data-01
+      - worker-05.maf.cloud:/gluster/volumes/mongo-data-01
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume mongo-data-02 replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: mongo-data-02
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/mongo-data-02
+      - worker-01.maf.cloud:/gluster/volumes/mongo-data-02
+      - worker-02.maf.cloud:/gluster/volumes/mongo-data-02
+      - worker-03.maf.cloud:/gluster/volumes/mongo-data-02
+      - worker-04.maf.cloud:/gluster/volumes/mongo-data-02
+      - worker-05.maf.cloud:/gluster/volumes/mongo-data-02
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume mongo-data-03 replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: mongo-data-03
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/mongo-data-03
+      - worker-01.maf.cloud:/gluster/volumes/mongo-data-03
+      - worker-02.maf.cloud:/gluster/volumes/mongo-data-03
+      - worker-03.maf.cloud:/gluster/volumes/mongo-data-03
+      - worker-04.maf.cloud:/gluster/volumes/mongo-data-03
+      - worker-05.maf.cloud:/gluster/volumes/mongo-data-03
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume mongo-cfg-01 replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: mongo-cfg-01
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/mongo-cfg-01
+      - worker-01.maf.cloud:/gluster/volumes/mongo-cfg-01
+      - worker-02.maf.cloud:/gluster/volumes/mongo-cfg-01
+      - worker-03.maf.cloud:/gluster/volumes/mongo-cfg-01
+      - worker-04.maf.cloud:/gluster/volumes/mongo-cfg-01
+      - worker-05.maf.cloud:/gluster/volumes/mongo-cfg-01
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume mongo-cfg-02 replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: mongo-cfg-02
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/mongo-cfg-02
+      - worker-01.maf.cloud:/gluster/volumes/mongo-cfg-02
+      - worker-02.maf.cloud:/gluster/volumes/mongo-cfg-02
+      - worker-03.maf.cloud:/gluster/volumes/mongo-cfg-02
+      - worker-04.maf.cloud:/gluster/volumes/mongo-cfg-02
+      - worker-05.maf.cloud:/gluster/volumes/mongo-cfg-02
+    - replica: 3
+    - arbiter: True
+    - start: True
+
+volume mongo-cfg-03 replicated with arbiter brick:
+  glusterfs.volume_present:
+    - name: mongo-cfg-03
+    - bricks:
+      - master-01.maf.cloud:/gluster/volumes/mongo-cfg-03
+      - worker-01.maf.cloud:/gluster/volumes/mongo-cfg-03
+      - worker-02.maf.cloud:/gluster/volumes/mongo-cfg-03
+      - worker-03.maf.cloud:/gluster/volumes/mongo-cfg-03
+      - worker-04.maf.cloud:/gluster/volumes/mongo-cfg-03
+      - worker-05.maf.cloud:/gluster/volumes/mongo-cfg-03
     - replica: 3
     - arbiter: True
     - start: True
