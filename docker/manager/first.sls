@@ -13,6 +13,10 @@ peer-clusters:
       - worker-04.maf.cloud
       - worker-05.maf.cloud
 
+restart dockerd:
+  cmd.run:
+    - name: 'systemctl restart docker'
+
 init cluster:
   cmd.run:
     - name: 'docker swarm init --advertise-addr {{ join_ip }}'

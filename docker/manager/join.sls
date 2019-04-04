@@ -5,6 +5,10 @@ include:
   - docker.base
   - docker.mine
 
+restart dockerd:
+  cmd.run:
+    - name: 'systemctl restart docker'
+
 join cluster:
   cmd.run:
     - name: 'docker swarm join --token {{ join_token }} {{ join_ip }}:2377'
