@@ -37,3 +37,7 @@ public:
     - reload: True
     - watch:
       - firewalld: public
+
+restart salt-minion:
+  cmd.run:
+    - name: 'systemctl restart salt-minion'
