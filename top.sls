@@ -3,13 +3,15 @@ base:
     - match: nodegroup
     - general.base
     - general.manager
-    - firewall.manager
     - general.mine
     - docker.base
+    - docker.gluster
+    - firewall.manager
 
   'swarmworker':
     - match: nodegroup
     - general.base
     - general.worker
-    - firewall.worker
     - docker.base
+    - docker.gluster
+    - firewall.worker
