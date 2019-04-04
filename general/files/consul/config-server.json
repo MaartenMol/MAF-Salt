@@ -1,6 +1,6 @@
 {
     "client_addr": "0.0.0.0",
-    "domain": "maf.cloud",
+    "domain": "maf.sd",
     "log_level": "WARN",
     "bootstrap_expect": 1,
     "server": true,
