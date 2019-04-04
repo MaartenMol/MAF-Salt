@@ -5,7 +5,6 @@ base:
     - general.manager
     - general.mine
     - docker.base
-    - docker.master
     - firewall.manager
 
   'swarmworker':
