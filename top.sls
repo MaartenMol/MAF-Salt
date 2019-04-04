@@ -5,7 +5,7 @@ base:
     - general.manager
     - general.mine
     - docker.base
-    - docker.gluster
+    - docker.master
     - firewall.manager
 
   'swarmworker':
@@ -13,5 +13,4 @@ base:
     - general.base
     - general.worker
     - docker.base
-    - docker.gluster
     - firewall.worker

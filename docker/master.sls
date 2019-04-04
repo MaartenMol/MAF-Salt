@@ -1,3 +1,13 @@
+peer-clusters:
+  glusterfs.peered:
+    - names:
+      - master-01.maf.cloud
+      - worker-01.maf.cloud
+      - worker-02.maf.cloud
+      - worker-03.maf.cloud
+      - worker-04.maf.cloud
+      - worker-05.maf.cloud
+
 volume portainer replicated with arbiter brick:
   glusterfs.volume_present:
     - name: portainer

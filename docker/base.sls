@@ -34,16 +34,6 @@ glusterd:
     - dir_mode: 777
     - makedirs: True
 
-peer-clusters:
-  glusterfs.peered:
-    - names:
-      - master-01.maf.cloud
-      - worker-01.maf.cloud
-      - worker-02.maf.cloud
-      - worker-03.maf.cloud
-      - worker-04.maf.cloud
-      - worker-05.maf.cloud
-
 /usr/local/bin/ctop:
   file.managed:
     - source: salt://docker/files/ctop-0.7.2-linux-amd64
